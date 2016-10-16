@@ -21,11 +21,27 @@ defmodule Fw.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {Fw, []},
-     applications: [:logger]]
+     applications:
+      [
+        :logger,
+        :nerves_interim_wifi,
+        :elixir_ale,
+        :gpio_rpi
+      ]
+    ]
   end
 
   def deps do
-    [{:nerves, "~> 0.3.0"}]
+    [
+      {:nerves, "~> 0.3.0"},
+      {:elixir_ale, "~> 0.5.6"},
+      {:gpio_rpi, "~> 0.1.0"},
+      {:nerves_interim_wifi, "~> 0.1.0"}
+    ]
+
+    #Elixir_ale
+    #GPIO_Rpi
+    #WiFi
   end
 
   def system(target) do

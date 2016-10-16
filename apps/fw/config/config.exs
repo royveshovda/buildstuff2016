@@ -5,6 +5,16 @@
 # is restricted to this project.
 use Mix.Config
 
+config :nerves, :firmware,
+  rootfs_additions: "rootfs-additions"
+
+  config :nerves_interim_wifi,
+    regulatory_domain: "LT"
+
+  config :fw, :wlan0,
+    ssid: "XX",
+    psk: "YY"
+
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations
