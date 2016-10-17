@@ -38,10 +38,6 @@ defmodule Fw.Mixfile do
       {:gpio_rpi, "~> 0.1.0"},
       {:nerves_interim_wifi, "~> 0.1.0"}
     ]
-
-    #Elixir_ale
-    #GPIO_Rpi
-    #WiFi
   end
 
   def system(target) do

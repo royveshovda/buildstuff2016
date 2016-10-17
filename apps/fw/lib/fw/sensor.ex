@@ -1,8 +1,8 @@
 defmodule Fw.Sensor do
   use GenServer
 
-  def start_link() do
-    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
+  def start_link(opts \\ []) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
   def get_temperature() do
@@ -14,7 +14,7 @@ defmodule Fw.Sensor do
   end
 
 
-  def init(:ok) do
+  def init([]) do
     {:ok, pid} = I2c.start_link("i2c-1", 0x40)
     state = %{pid: pid}
     {:ok, state}

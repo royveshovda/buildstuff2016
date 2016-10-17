@@ -1,8 +1,8 @@
 defmodule Fw.Led do
   use GenServer
 
-  def start_link() do
-    GenServer.start_link(__MODULE__, :ok, name: __MODULE__)
+  def start_link(opts \\ []) do
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
   def set_green(state) do
@@ -41,7 +41,7 @@ defmodule Fw.Led do
     GenServer.cast(__MODULE__, {:switch, :r2, state})
   end
 
-  def init(:ok) do
+  def init([]) do
     {:ok, g1} = GpioRpi.start_link(22, :output)
     {:ok, g2} = GpioRpi.start_link(25, :output)
     {:ok, y1} = GpioRpi.start_link(27, :output)
