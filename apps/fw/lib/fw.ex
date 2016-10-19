@@ -11,7 +11,8 @@ defmodule Fw do
     children = [
       worker(Task, [fn -> network end], restart: :transient),
       worker(Fw.Led, []),
-      worker(Fw.Sensor, [])
+      worker(Fw.Sensor, []),
+      worker(Fw.Button, [])
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
