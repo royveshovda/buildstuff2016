@@ -6,6 +6,7 @@ defmodule Logic.TwitterWorker do
 
   def send(message) do
     ExTwitter.update(message)
+    :ok
   end
 
   def start_link(opts \\ []) do
