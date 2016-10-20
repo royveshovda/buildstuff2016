@@ -5,40 +5,40 @@ defmodule Fw.Led do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
-  def set_green(state) do
-    GenServer.cast(__MODULE__, {:switch, :green, state})
+  def set_green(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :green, switch_to})
   end
 
-  def set_green1(state) do
-    GenServer.cast(__MODULE__, {:switch, :g1, state})
+  def set_green1(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :g1, switch_to})
   end
 
-  def set_green2(state) do
-    GenServer.cast(__MODULE__, {:switch, :g2, state})
+  def set_green2(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :g2, switch_to})
   end
 
-  def set_yellow(state) do
-    GenServer.cast(__MODULE__, {:switch, :yellow, state})
+  def set_yellow(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :yellow, switch_to})
   end
 
-  def set_yellow1(state) do
-    GenServer.cast(__MODULE__, {:switch, :y1, state})
+  def set_yellow1(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :y1, switch_to})
   end
 
-  def set_yellow2(state) do
-    GenServer.cast(__MODULE__, {:switch, :y2, state})
+  def set_yellow2(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :y2, switch_to})
   end
 
-  def set_red(state) do
-    GenServer.cast(__MODULE__, {:switch, :red, state})
+  def set_red(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :red, switch_to})
   end
 
-  def set_red1(state) do
-    GenServer.cast(__MODULE__, {:switch, :r1, state})
+  def set_red1(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :r1, switch_to})
   end
 
-  def set_red2(state) do
-    GenServer.cast(__MODULE__, {:switch, :r2, state})
+  def set_red2(switch_to) do
+    GenServer.cast(__MODULE__, {:switch, :r2, switch_to})
   end
 
   def init([]) do
