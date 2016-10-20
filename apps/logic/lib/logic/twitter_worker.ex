@@ -2,6 +2,9 @@ defmodule Logic.TwitterWorker do
   use GenServer
 
   @hashtag "#buildstuff_nerves_workshop"
+  @r "red"
+  @g "green"
+  @y "yellow"
   @user_handle "@RoyV33706219"
 
   def send(message) do
@@ -25,7 +28,20 @@ defmodule Logic.TwitterWorker do
   end
 
   def handle_cast({:tweet_update, tweet}, state) do
-    IO.puts tweet.text
+    result = format_message(tweet.text)
+    IO.inspect(result)
     {:noreply, state}
   end
+
+  def format_message(input) do
+    words =
+      input
+      |> String.replace(@hashtag, "")
+      |> String.split
+    red = Enum.count(words, fn(x) -> x == @r end)
+    yellow = Enum.count(words, fn(x) -> x == @y end)
+    green = Enum.count(words, fn(x) -> x == @g end)
+    {red, yellow, green}
+  end
+  
 end
