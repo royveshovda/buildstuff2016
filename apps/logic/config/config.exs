@@ -20,12 +20,11 @@ use Mix.Config
 #
 #     config :logger, level: :info
 #
-
 config :extwitter, :oauth, [
-   consumer_key: "aaa",
-   consumer_secret: "bbb",
-   access_token: "ccc",
-   access_token_secret: "ddd"
+  consumer_key: "aaa",
+  consumer_secret: "bbb",
+  access_token: "ccc",
+  access_token_secret: "ddd"
 ]
 
 # It is also possible to import configuration files, relative to this

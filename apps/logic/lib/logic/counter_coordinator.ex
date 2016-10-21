@@ -18,6 +18,7 @@ defmodule Logic.CounterCoordinator do
   end
 
   def handle_cast({:new_update, new_update}, state) do
+    IO.puts "Got from Twitter: #{new_update}"
     count = format_message(new_update)
     IO.inspect(count)
     light_leds(count)

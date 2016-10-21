@@ -6,6 +6,7 @@ defmodule Logic.TwitterWorker do
 
   def send(message) do
     ExTwitter.update(message)
+    IO.puts "Tweeted: #{message}"
     :ok
   end
 
@@ -16,6 +17,8 @@ defmodule Logic.TwitterWorker do
   def init([]) do
     worker = self()
     pid = spawn(fn ->
+      Process.sleep(15000)
+      IO.puts "Listening to Twitter"
       stream = ExTwitter.stream_filter(track: @hashtag)
       for tweet <- stream do
         GenServer.cast(worker, {:tweet_update, tweet})
