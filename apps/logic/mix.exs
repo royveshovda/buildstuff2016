@@ -18,7 +18,7 @@ defmodule Logic.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :extwitter],
+    [applications: [:logger, :extwitter, :oauth, :poison],
      mod: {Logic, []}]
   end
 
@@ -38,7 +38,8 @@ defmodule Logic.Mixfile do
   defp deps do
     [
       {:oauth, github: "tim/erlang-oauth"},
-      {:extwitter, "~> 0.7.2"}
+      {:extwitter, "~> 0.7.2"},
+      {:poison, "~> 2.0"}
     ]
   end
 end

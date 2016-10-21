@@ -26,7 +26,8 @@ defmodule Fw.Mixfile do
         :logger,
         :nerves_interim_wifi,
         :elixir_ale,
-        :gpio_rpi
+        :gpio_rpi,
+        :logic
       ]
     ]
   end
@@ -36,7 +37,8 @@ defmodule Fw.Mixfile do
       {:nerves, "~> 0.3.0"},
       {:elixir_ale, "~> 0.5.6"},
       {:gpio_rpi, "~> 0.1.0"},
-      {:nerves_interim_wifi, "~> 0.1.0"}
+      {:nerves_interim_wifi, "~> 0.1.0"},
+      {:logic, in_umbrella: true},
     ]
   end
 
