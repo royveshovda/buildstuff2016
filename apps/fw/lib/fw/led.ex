@@ -49,7 +49,19 @@ defmodule Fw.Led do
     {:ok, r1} = GpioRpi.start_link(17, :output)
     {:ok, r2} = GpioRpi.start_link(23, :output)
 
-    state = %{g1: g1, g2: g2, y1: y1, y2: y2, r1: r1, r2: r2}
+    state = %{
+              g1: g1,
+              g2: g2,
+              y1: y1,
+              y2: y2,
+              r1: r1,
+              r2: r2,
+              g1_state: 0,
+              g2_state: 0,
+              y1_state: 0,
+              y2_state: 0,
+              r1_state: 0,
+              r2_state: 0}
     {:ok, state}
   end
 
@@ -58,19 +70,28 @@ defmodule Fw.Led do
     pid2 = state.g2
     GpioRpi.write(pid1, switch_to)
     GpioRpi.write(pid2, switch_to)
-    {:noreply, state}
+    new_state = %{state | g1_state: state, g2_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :g1, switch_to}, state) do
     pid = state.g1
     GpioRpi.write(pid, switch_to)
-    {:noreply, state}
+    new_state = %{state | g1_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :g2, switch_to}, state) do
     pid = state.g2
     GpioRpi.write(pid, switch_to)
-    {:noreply, state}
+    new_state = %{state | g2_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :yellow, switch_to}, state) do
@@ -78,19 +99,28 @@ defmodule Fw.Led do
     pid2 = state.y2
     GpioRpi.write(pid1, switch_to)
     GpioRpi.write(pid2, switch_to)
-    {:noreply, state}
+    new_state = %{state | y1_state: state, y2_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :y1, switch_to}, state) do
     pid = state.y1
     GpioRpi.write(pid, switch_to)
-    {:noreply, state}
+    new_state = %{state | y1_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :y2, switch_to}, state) do
     pid = state.y2
     GpioRpi.write(pid, switch_to)
-    {:noreply, state}
+    new_state = %{state | y2_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :red, switch_to}, state) do
@@ -98,18 +128,33 @@ defmodule Fw.Led do
     pid2 = state.r2
     GpioRpi.write(pid1, switch_to)
     GpioRpi.write(pid2, switch_to)
-    {:noreply, state}
+    new_state = %{state | r1_state: state, r2_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :r1, switch_to}, state) do
     pid = state.r1
     GpioRpi.write(pid, switch_to)
-    {:noreply, state}
+    new_state = %{state | r1_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
   end
 
   def handle_cast({:switch, :r2, switch_to}, state) do
     pid = state.r2
     GpioRpi.write(pid, switch_to)
-    {:noreply, state}
+    new_state = %{state | r2_state: state}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_leds_update(message)
+    {:noreply, new_state}
+  end
+
+  defp get_message_from_state(state) do
+    %{g1: state.g1_state, g2: state.g2_state,
+      y1: state.y1_state, y2: state.y2_state,
+      r1: state.r1_state, r2: state.r2_state}
   end
 end

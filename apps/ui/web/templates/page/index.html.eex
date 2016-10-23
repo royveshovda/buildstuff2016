@@ -8,13 +8,13 @@
     <h4>Resources</h4>
     <ul>
       <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+        <a href="http://phoenixframework.org/">Phoenix</a>
       </li>
       <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
+        <a href="http://nerves-project.org">Nerves-project</a>
       </li>
       <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        <a href="http://raspberrypi.org">Raspberry Pi</a>
       </li>
     </ul>
   </div>

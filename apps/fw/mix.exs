@@ -28,7 +28,8 @@ defmodule Fw.Mixfile do
         :elixir_ale,
         :gpio_rpi,
         :nerves_ntp,
-        :logic
+        :logic,
+        :ui
       ]
     ]
   end
@@ -41,6 +42,7 @@ defmodule Fw.Mixfile do
       {:nerves_interim_wifi, "~> 0.1.0"},
       {:nerves_ntp, "~> 0.1.1"},
       {:logic, in_umbrella: true},
+      {:ui, in_umbrella: true},
     ]
   end
 

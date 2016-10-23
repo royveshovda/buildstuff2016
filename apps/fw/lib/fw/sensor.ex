@@ -16,7 +16,7 @@ defmodule Fw.Sensor do
 
   def init([]) do
     {:ok, pid} = I2c.start_link("i2c-1", 0x40)
-    state = %{pid: pid}
+    state = %{pid: pid, temperature: :unknown, humidity: :unknown}
     {:ok, state}
   end
 
@@ -26,7 +26,12 @@ defmodule Fw.Sensor do
     Process.sleep(25)
     <<high, low, _chk>> = I2c.read(pid, 3)
     temp = ((high*256 + low) * 175.72 / 65536) - 46.85
-    {:reply, temp, state}
+
+    new_state = %{state | temperature: temp}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_sensor_update(message)
+
+    {:reply, temp, new_state}
   end
 
   def handle_call(:get_humidity, _from, state) do
@@ -35,6 +40,15 @@ defmodule Fw.Sensor do
     Process.sleep(25)
     <<high, low, _chk>> = I2c.read(pid, 3)
     hum = ((high*256 + low) * 125 / 65536) - 6
+
+    new_state = %{state | humidity: hum}
+    message = get_message_from_state(new_state)
+    Ui.Updater.send_sensor_update(message)
+
     {:reply, hum, state}
+  end
+
+  defp get_message_from_state(state) do
+    %{temperature: state.temperature, humidity: state.humidity}
   end
 end
