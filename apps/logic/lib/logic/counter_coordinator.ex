@@ -49,43 +49,35 @@ defmodule Logic.CounterCoordinator do
   defp light_red_leds(1) do
     Fw.Led.set_red1(1)
     Fw.Led.set_red2(0)
-    #IO.puts("Red: 1")
   end
 
   defp light_red_leds(x) when x >= 2 do
     Fw.Led.set_red(1)
-    #IO.puts("Red: 2")
   end
 
   defp light_yellow_leds(0) do
     Fw.Led.set_yellow(0)
-    #IO.puts("Yellow: 0")
   end
 
   defp light_yellow_leds(1) do
     Fw.Led.set_yellow1(1)
     Fw.Led.set_yellow2(0)
-    #IO.puts("Yellow: 1")
   end
 
   defp light_yellow_leds(x) when x >= 2 do
     Fw.Led.set_yellow(1)
-    #IO.puts("Yellow: 2")
   end
 
   defp light_green_leds(0) do
     Fw.Led.set_green(0)
-    #IO.puts("Green: 0")
   end
 
   defp light_green_leds(1) do
     Fw.Led.set_green1(1)
     Fw.Led.set_green2(0)
-    #IO.puts("Green: 1")
   end
 
   defp light_green_leds(x) when x >= 2 do
     Fw.Led.set_green(1)
-    #IO.puts("Green: 2")
   end
 end

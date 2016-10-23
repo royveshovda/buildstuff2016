@@ -33,7 +33,6 @@ defmodule Logic.TwitterWorker do
 
   defp start_twitter_stream(pid_to_send_result) do
     pid = spawn(fn ->
-      Process.sleep(15000)
       IO.puts "Listening to Twitter"
       stream = ExTwitter.stream_filter(track: @hashtag)
       for tweet <- stream do
@@ -42,8 +41,6 @@ defmodule Logic.TwitterWorker do
     end)
     pid
   end
-
-
 
   def handle_cast({:tweet_update, tweet}, state) do
     message = String.replace(tweet.text, @hashtag, "")

@@ -19,21 +19,21 @@ defmodule Fw.Button do
   end
 
   def handle_info({:gpio_interrupt, @pin_temperature, :falling}, state) do
-    new_state = %{state | b1: :down}
+    new_state = %{state | b1: :up}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     {:noreply, new_state}
   end
 
   def handle_info({:gpio_interrupt, @pin_humidity, :falling}, state) do
-    new_state = %{state | b2: :down}
+    new_state = %{state | b2: :up}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     {:noreply, new_state}
   end
 
   def handle_info({:gpio_interrupt, @pin_temperature, :rising}, state) do
-    new_state = %{state | b1: :up}
+    new_state = %{state | b1: :down}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     send_temperature
@@ -41,7 +41,7 @@ defmodule Fw.Button do
   end
 
   def handle_info({:gpio_interrupt, @pin_humidity, :rising}, state) do
-    new_state = %{state | b2: :up}
+    new_state = %{state | b2: :down}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     send_humidity

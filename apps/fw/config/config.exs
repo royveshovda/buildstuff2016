@@ -25,22 +25,23 @@ config :logger, level: :info
 config :ui, Ui.Endpoint,
   url: [host: "0.0.0.0"],
   http: [port: 80],
+  check_origin: false,
   secret_key_base: "VWoNyclnlCc/qRKZMhrFvr/P1Vb9tleztCuVZus8Y1ue3GevILInN4msrnfrnVMQ",
   render_errors: [view: Ui.ErrorView, accepts: ~w(html json)],
   server: true,
   pubsub: [name: Ui.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
- config :fw, :wlan0,
-   ssid: "XX",
-   psk: "YY"
+config :fw, :wlan0,
+ ssid: "XX",
+ psk: "YY"
 
- config :extwitter, :oauth, [
-   consumer_key: "aaa",
-   consumer_secret: "bbb",
-   access_token: "ccc",
-   access_token_secret: "ddd"
- ]
+config :extwitter, :oauth, [
+ consumer_key: "aaa",
+ consumer_secret: "bbb",
+ access_token: "ccc",
+ access_token_secret: "ddd"
+]
 
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

@@ -18,20 +18,20 @@ defmodule Ui.Updater do
   end
 
   def handle_cast({:leds, led_states}, state) do
-    IO.puts "Web event LEDs:"
-    IO.inspect led_states
+    message = "LEDs: #{inspect led_states}"
+    Ui.HardwareChannel.broadcast_update(message)
     {:noreply, state}
   end
 
   def handle_cast({:buttons, button_states}, state) do
-    IO.puts "Web event buttons:"
-    IO.inspect button_states
+    message = "Buttons: #{inspect button_states}"
+    Ui.HardwareChannel.broadcast_update(message)
     {:noreply, state}
   end
 
   def handle_cast({:sensors, sensor_states}, state) do
-    IO.puts "Web event sensors:"
-    IO.inspect sensor_states
+    message = "Sensors: #{inspect sensor_states}"
+    Ui.HardwareChannel.broadcast_update(message)
     {:noreply, state}
   end
 
