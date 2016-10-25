@@ -2,8 +2,18 @@ defmodule Ui.HardwareChannel do
   use Ui.Web, :channel
   #use Phoenix.Channel
 
-  def broadcast_update(sensor_data) do
-    Ui.Endpoint.broadcast("hardware:all", "new_update", %{body: sensor_data})
+
+
+  def broadcast_update({:leds, led_states}) do
+    Ui.Endpoint.broadcast("hardware:all", "new_update", %{body: led_states, type: '1'})
+  end
+
+  def broadcast_update({:buttons, button_states}) do
+    Ui.Endpoint.broadcast("hardware:all", "new_update", %{body: button_states, type: '2'})
+  end
+
+  def broadcast_update({:sensors, sensor_states}) do
+    Ui.Endpoint.broadcast("hardware:all", "new_update", %{body: sensor_states, type: '3'})
   end
 
   def join("hardware:all", _payload, socket) do
