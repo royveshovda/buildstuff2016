@@ -1,6 +1,8 @@
 defmodule Logic.CounterCoordinator do
   use GenServer
 
+  require Logger
+
   @r "red"
   @g "green"
   @y "yellow"
@@ -18,9 +20,9 @@ defmodule Logic.CounterCoordinator do
   end
 
   def handle_cast({:new_update, new_update}, state) do
-    IO.puts "Got from Twitter: #{new_update}"
+    Logger.debug "Got from Twitter: #{new_update}"
     count = format_message(new_update)
-    IO.inspect(count)
+    Logger.debug(inspect(count))
     light_leds(count)
     {:noreply, state}
   end
@@ -43,7 +45,6 @@ defmodule Logic.CounterCoordinator do
 
   defp light_red_leds(0) do
     Fw.Led.set_red(0)
-    #IO.puts("Red: 0")
   end
 
   defp light_red_leds(1) do

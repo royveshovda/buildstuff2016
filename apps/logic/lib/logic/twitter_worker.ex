@@ -1,13 +1,13 @@
 defmodule Logic.TwitterWorker do
   use GenServer
 
+  require Logger
+
   @hashtag "#buildstuff_nerves_workshop"
   @user_handle "@RoyV33706219"
 
   def send(message) do
-    ExTwitter.update(message)
-    IO.puts "Tweeted: #{message}"
-    :ok
+    GenServer.cast(__MODULE__, {:send_tweet, message})
   end
 
   def start_link(opts \\ []) do
@@ -16,7 +16,7 @@ defmodule Logic.TwitterWorker do
 
   def init([]) do
     Process.send_after(self(), :starting, 500)
-    {:ok, %{}}
+    {:ok, %{running: false}}
   end
 
   def handle_info(:starting, state) do
@@ -27,7 +27,7 @@ defmodule Logic.TwitterWorker do
       _ ->
         worker = self()
         pid = start_twitter_stream(worker)
-        {:noreply, %{pid: pid}}
+        {:noreply, %{pid: pid, running: true}}
     end
   end
 
@@ -45,6 +45,17 @@ defmodule Logic.TwitterWorker do
   def handle_cast({:tweet_update, tweet}, state) do
     message = String.replace(tweet.text, @hashtag, "")
     Logic.CounterCoordinator.send_update(message)
+    {:noreply, state}
+  end
+
+  def handle_cast({:send_tweet, message}, state) do
+    case state.running do
+      true ->
+        ExTwitter.update(message)
+        Logger.debug "Tweeted: #{message}"
+      false ->
+        Logger.warn "ExTwitter not running yet"
+    end
     {:noreply, state}
   end
 end

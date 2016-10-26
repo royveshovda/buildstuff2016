@@ -54,15 +54,21 @@ defmodule Fw.Button do
 
   defp send_temperature() do
     temp = Fw.Sensor.get_temperature()
-    # Include node-name and timestamp
-    message = "I got temperature: #{temp}"
+    stamp = "#{DateTime.utc_now |> DateTime.to_time |> Time.to_string}Z"
+    node = "#{Node.self()}"
+
+    message = "I got temperature: #{temp} (timestamp: #{stamp}) (node: #{node})"
+
     Logic.TwitterWorker.send(message)
   end
 
   defp send_humidity() do
     hum = Fw.Sensor.get_humidity()
-    # Include node-name and timestamp
-    message = "I got humidity: #{hum}"
+    stamp = "#{DateTime.utc_now |> DateTime.to_time |> Time.to_string}Z"
+    node = "#{Node.self()}"
+
+    message = "I got humidity: #{hum} (timestamp: #{stamp}) (node: #{node})"
+
     Logic.TwitterWorker.send(message)
   end
 end
