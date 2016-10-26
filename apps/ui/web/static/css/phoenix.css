@@ -43,11 +43,12 @@ form.link, form.button {
 }
 
 /* Customize container */
-@media (min-width: 768px) {
+@media (min-width: 1068px) {
   .container {
-    max-width: 730px;
+    max-width: 1030px;
   }
 }
+
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -56,6 +57,10 @@ form.link, form.button {
 .jumbotron {
   text-align: center;
   border-bottom: 1px solid #e5e5e5;
+}
+
+li {
+  text-align: left;
 }
 
 /* Supporting marketing content */
