@@ -59,7 +59,9 @@ let messagesContainer = document.querySelector("#messages")
 
 channel.on("new_update", payload => {
   let messageItem = document.createElement("li");
-  messageItem.innerText = `[${Date()}] ${payload.body}`
+  //messageItem.innerText = `[${Date()}] ${payload.body}`
+  messageItem.innerText = `[${Date()}] ${JSON.stringify(payload)}`
+
   messagesContainer.appendChild(messageItem)
 })
 
