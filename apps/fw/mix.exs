@@ -36,7 +36,7 @@ defmodule Fw.Mixfile do
 
   def deps do
     [
-      {:nerves, "~> 0.3.0"},
+      {:nerves, "~> 0.3.4"},
       {:elixir_ale, "~> 0.5.6"},
       {:gpio_rpi, "~> 0.1.0"},
       {:nerves_interim_wifi, "~> 0.1.0"},

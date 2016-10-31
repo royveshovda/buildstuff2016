@@ -9,7 +9,7 @@
   "extwitter": {:hex, :extwitter, "0.7.2", "15b40b75452164c312422dd02a3e849d777cf5d879fbf4b8f5f37c98ec96d334", [:mix], [{:poison, "~> 2.0", [hex: :poison, optional: false]}]},
   "fs": {:hex, :fs, "0.9.2", "ed17036c26c3f70ac49781ed9220a50c36775c6ca2cf8182d123b6566e49ec59", [:rebar], []},
   "getopt": {:hex, :getopt, "0.8.2", "b17556db683000ba50370b16c0619df1337e7af7ecbf7d64fbf8d1d6bce3109b", [:rebar], []},
-  "gettext": {:hex, :gettext, "0.11.0", "80c1dd42d270482418fa158ec5ba073d2980e3718bacad86f3d4ad71d5667679", [:mix], []},
+  "gettext": {:hex, :gettext, "0.12.1", "c0624f52763469ef7a3674919ae28b8286d88195b90fa1516180f31bbbd26d14", [:mix], []},
   "gpio_rpi": {:hex, :gpio_rpi, "0.1.0", "dc9cf817636f217fc61964c7d6f73dd3a629379e257ac6c88647e289ba4cd139", [:mix, :make], [{:elixir_make, "~>0.3", [hex: :elixir_make, optional: false]}]},
   "mime": {:hex, :mime, "1.0.1", "05c393850524767d13a53627df71beeebb016205eb43bfbd92d14d24ec7a1b51", [:mix], []},
   "nerves": {:hex, :nerves, "0.3.4", "7de99513f2775633e2db00acbf7437c55bd132f19b7406814f50818702b381b5", [:mix], [{:exrm, "~> 1.0.6", [hex: :exrm, optional: false]}]},
