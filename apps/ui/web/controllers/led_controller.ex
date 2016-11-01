@@ -5,7 +5,6 @@ defmodule Ui.LedController do
   @hw_led Application.get_env(:ui, :led_hw)
 
   def index(conn, _params) do
-    #state = Fw.Led.get_state()
     state = @hw_led.get_state()
     json(conn, state)
   end

@@ -14,6 +14,7 @@ config :ui, Ui.Endpoint,
            adapter: Phoenix.PubSub.PG2]
 
 config :ui, :led_hw, Ui.Simulator.Led
+config :ui, :sensor_hw, Ui.Simulator.Sensor
 
 # Configures Elixir's Logger
 config :logger, :console,
