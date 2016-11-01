@@ -92,7 +92,7 @@ defmodule Ui.Simulator.Led do
   def handle_cast({:switch, :y1, switch_to}, state) do
     int_switch_to = convert_switch_to(switch_to)
     IO.puts "Yellow1: #{int_switch_to}"
-    new_state = %{state | y1_state: int_switch_to}
+    new_state = %{state | y1: int_switch_to}
     Ui.Updater.send_leds_update(new_state)
     {:noreply, new_state}
   end

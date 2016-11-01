@@ -19,14 +19,23 @@ defmodule Ui.HardwareSimulator do
   end
 
   defp send_leds_update() do
-    g1 = Enum.random([0,1])
-    g2 = Enum.random([0,1])
-    y1 = Enum.random([0,1])
-    y2 = Enum.random([0,1])
-    r1 = Enum.random([0,1])
-    r2 = Enum.random([0,1])
-    Ui.Updater.send_leds_update(%{g1: g1, g2: g2, y1: y1, y2: y2, r1: r1, r2: r2})
+    #TODO: Random if should update
+    g1 = to_boolean(Enum.random([0,1]))
+    g2 = to_boolean(Enum.random([0,1]))
+    y1 = to_boolean(Enum.random([0,1]))
+    y2 = to_boolean(Enum.random([0,1]))
+    r1 = to_boolean(Enum.random([0,1]))
+    r2 = to_boolean(Enum.random([0,1]))
+    Ui.Simulator.Led.set_green1(g1)
+    Ui.Simulator.Led.set_green2(g2)
+    Ui.Simulator.Led.set_yellow1(y1)
+    Ui.Simulator.Led.set_yellow2(y2)
+    Ui.Simulator.Led.set_red1(r1)
+    Ui.Simulator.Led.set_red2(r2)
   end
+
+  defp to_boolean(0), do: false
+  defp to_boolean(1), do: true
 
   defp send_buttons_update() do
     b1 = Enum.random([0,1])
