@@ -37,7 +37,7 @@ defmodule Ui.Simulator.Sensor do
     new_state = %{state | humidity: hum}
     message = get_message_from_state(new_state)
     Ui.Updater.send_sensor_update(message)
-    {:reply, hum, state}
+    {:reply, hum, new_state}
   end
 
   defp get_message_from_state(state) do

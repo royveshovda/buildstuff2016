@@ -46,7 +46,7 @@ defmodule Fw.Sensor do
     message = get_message_from_state(new_state)
     Ui.Updater.send_sensor_update(message)
 
-    {:reply, hum, state}
+    {:reply, hum, new_state}
   end
 
   defp get_message_from_state(state) do
