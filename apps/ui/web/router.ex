@@ -24,7 +24,8 @@ defmodule Ui.Router do
     pipe_through :api
     get "/", RootApiController, :index
     get "/leds", LedController, :index
-    get "/leds:id", LedController, :show
     post "/leds/:id/:state", LedController, :update
+    get "/buttons", ButtonController, :index
+    get "/sensors", SensorController, :index
   end
 end

@@ -5,6 +5,10 @@ defmodule Fw.Led do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
+  def get_state() do
+    GenServer.call(__MODULE__, :get_state)
+  end
+
   def set_green(switch_to) do
     GenServer.cast(__MODULE__, {:switch, :green, switch_to})
   end
@@ -63,6 +67,11 @@ defmodule Fw.Led do
               r1_state: 0,
               r2_state: 0}
     {:ok, state}
+  end
+
+  def handle_call(:get_state, _from, state) do
+    return_state = %{g1: state.g1_state, g2: state.g2_state, y1: state.y1_state, y2: state.y2_state, r1: state.r1_state, r2: state.r2_state}
+    {:reply, return_state, state}
   end
 
   def handle_cast({:switch, :green, switch_to}, state) do

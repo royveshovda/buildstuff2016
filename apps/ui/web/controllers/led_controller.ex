@@ -2,11 +2,9 @@ defmodule Ui.LedController do
   use Ui.Web, :controller
   require Logger
   def index(conn, _params) do
-    json(conn,[%{id: "g1"},%{id: "g2"},%{id: "y1"},%{id: "y2"},%{id: "r1"},%{id: "r2"}])
-  end
-
-  def show(conn, %{"id" => id}) do
-    json(conn, %{id: id, state: "Unknown"})
+    #state = Fw.Led.get_state()
+    state = %{g1: "unknown", g2: "unknown", y1: "unknown", y2: "unknown", r1: "unknown", r2: "unknown"}
+    json(conn,state)
   end
 
   def update(conn, %{"id" => id, "state" => state}) do
