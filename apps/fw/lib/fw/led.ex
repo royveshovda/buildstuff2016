@@ -1,5 +1,6 @@
 defmodule Fw.Led do
   use GenServer
+  @behaviour Contract.Led
 
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
@@ -75,95 +76,107 @@ defmodule Fw.Led do
   end
 
   def handle_cast({:switch, :green, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid1 = state.g1
     pid2 = state.g2
-    GpioRpi.write(pid1, switch_to)
-    GpioRpi.write(pid2, switch_to)
-    new_state = %{state | g1_state: switch_to, g2_state: switch_to}
+    GpioRpi.write(pid1, int_switch_to)
+    GpioRpi.write(pid2, int_switch_to)
+    new_state = %{state | g1_state: int_switch_to, g2_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :g1, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid = state.g1
-    GpioRpi.write(pid, switch_to)
-    new_state = %{state | g1_state: switch_to}
+    GpioRpi.write(pid, int_switch_to)
+    new_state = %{state | g1_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :g2, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid = state.g2
     GpioRpi.write(pid, switch_to)
-    new_state = %{state | g2_state: switch_to}
+    new_state = %{state | g2_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :yellow, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid1 = state.y1
     pid2 = state.y2
-    GpioRpi.write(pid1, switch_to)
-    GpioRpi.write(pid2, switch_to)
-    new_state = %{state | y1_state: switch_to, y2_state: switch_to}
+    GpioRpi.write(pid1, int_switch_to)
+    GpioRpi.write(pid2, int_switch_to)
+    new_state = %{state | y1_state: int_switch_to, y2_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :y1, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid = state.y1
-    GpioRpi.write(pid, switch_to)
-    new_state = %{state | y1_state: switch_to}
+    GpioRpi.write(pid, int_switch_to)
+    new_state = %{state | y1_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :y2, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid = state.y2
-    GpioRpi.write(pid, switch_to)
-    new_state = %{state | y2_state: switch_to}
+    GpioRpi.write(pid, int_switch_to)
+    new_state = %{state | y2_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :red, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid1 = state.r1
     pid2 = state.r2
-    GpioRpi.write(pid1, switch_to)
-    GpioRpi.write(pid2, switch_to)
-    new_state = %{state | r1_state: switch_to, r2_state: switch_to}
+    GpioRpi.write(pid1, int_switch_to)
+    GpioRpi.write(pid2, int_switch_to)
+    new_state = %{state | r1_state: int_switch_to, r2_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :r1, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid = state.r1
-    GpioRpi.write(pid, switch_to)
-    new_state = %{state | r1_state: switch_to}
+    GpioRpi.write(pid, int_switch_to)
+    new_state = %{state | r1_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   def handle_cast({:switch, :r2, switch_to}, state) do
+    int_switch_to = convert_switch_to(switch_to)
     pid = state.r2
-    GpioRpi.write(pid, switch_to)
-    new_state = %{state | r2_state: switch_to}
+    GpioRpi.write(pid, int_switch_to)
+    new_state = %{state | r2_state: int_switch_to}
     message = get_message_from_state(new_state)
     Ui.Updater.send_leds_update(message)
     {:noreply, new_state}
   end
 
   defp get_message_from_state(state) do
-    %{g1: state.g1_state, g2: state.g2_state,
+    %Contract.LedState{g1: state.g1_state, g2: state.g2_state,
       y1: state.y1_state, y2: state.y2_state,
       r1: state.r1_state, r2: state.r2_state}
   end
+
+  defp convert_switch_to(true), do: 1
+  defp convert_switch_to(false), do: 0
 end

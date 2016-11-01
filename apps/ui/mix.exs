@@ -37,6 +37,7 @@ defmodule Ui.Mixfile do
      {:phoenix_html, "~> 2.7"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.12.1"},
-     {:cowboy, "~> 1.0"},]
+     {:cowboy, "~> 1.0"},
+     {:contract, in_umbrella: true}]
   end
 end

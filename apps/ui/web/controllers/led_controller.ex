@@ -1,10 +1,13 @@
 defmodule Ui.LedController do
   use Ui.Web, :controller
   require Logger
+
+  @hw_led Application.get_env(:ui, :led_hw)
+
   def index(conn, _params) do
     #state = Fw.Led.get_state()
-    state = %{g1: "unknown", g2: "unknown", y1: "unknown", y2: "unknown", r1: "unknown", r2: "unknown"}
-    json(conn,state)
+    state = @hw_led.get_state()
+    json(conn, state)
   end
 
   def update(conn, %{"id" => id, "state" => state}) do
@@ -25,8 +28,8 @@ defmodule Ui.LedController do
 
   defp convert_state(state) do
     case state do
-      "1" -> 1
-      "0" -> 0
+      "1" -> true
+      "0" -> false
       _ ->
         message = "Unknown state received: #{inspect state}"
         Logger.warn(message)
@@ -41,28 +44,22 @@ defmodule Ui.LedController do
   defp switch_led(state, led) do
     case led do
       "g1" ->
-        #Fw.Led.set_green1(state)
-        IO.puts "Green1: #{state}"
+        @hw_led.set_green1(state)
         :accepted
       "g2" ->
-        #Fw.Led.set_green2(state)
-        IO.puts "Green2: #{state}"
+        @hw_led.set_green2(state)
         :accepted
       "y1" ->
-        #Fw.Led.set_yellow1(state)
-        IO.puts "Yellow1: #{state}"
+        @hw_led.set_yellow1(state)
         :accepted
       "y2" ->
-        #Fw.Led.set_yellow2(state)
-        IO.puts "Yellow2: #{state}"
+        @hw_led.set_yellow2(state)
         :accepted
       "r1" ->
-        #Fw.Led.set_red1(state)
-        IO.puts "Red1: #{state}"
+        @hw_led.set_red1(state)
         :accepted
       "r2" ->
-        #Fw.Led.set_red2(state)
-        IO.puts "Red2: #{state}"
+        @hw_led.set_red2(state)
         :accepted
       _ ->
         Logger.warn("Unknown led received: #{inspect led}")

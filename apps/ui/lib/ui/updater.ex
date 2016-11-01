@@ -5,10 +5,6 @@ defmodule Ui.Updater do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
-  def send_leds_update(led_states) do
-    GenServer.cast(__MODULE__, {:leds, led_states})
-  end
-
   def send_buttons_update(button_states) do
     GenServer.cast(__MODULE__, {:buttons, button_states})
   end
