@@ -43,7 +43,7 @@ defmodule Fw.Mixfile do
       {:nerves_ntp, "~> 0.1.1"},
       {:logic, in_umbrella: true},
       {:ui, in_umbrella: true},
-      {:contract, in_umbrella: true},
+      {:contract, in_umbrella: true}
     ]
   end
 

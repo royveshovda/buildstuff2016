@@ -39,7 +39,8 @@ defmodule Logic.Mixfile do
     [
       {:oauth, github: "tim/erlang-oauth"},
       {:extwitter, "~> 0.7.2"},
-      {:poison, "~> 2.0"}
+      {:poison, "~> 2.0"},
+      {:contract, in_umbrella: true}
     ]
   end
 end

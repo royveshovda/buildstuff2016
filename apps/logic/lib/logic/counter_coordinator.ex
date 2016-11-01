@@ -1,7 +1,8 @@
 defmodule Logic.CounterCoordinator do
   use GenServer
-
   require Logger
+
+  @hw_led Application.get_env(:ui, :led_hw)
 
   @r "red"
   @g "green"
@@ -44,41 +45,41 @@ defmodule Logic.CounterCoordinator do
   end
 
   defp light_red_leds(0) do
-    Fw.Led.set_red(0)
+    @hw_led.set_red(false)
   end
 
   defp light_red_leds(1) do
-    Fw.Led.set_red1(1)
-    Fw.Led.set_red2(0)
+    @hw_led.set_red1(true)
+    @hw_led.set_red2(false)
   end
 
   defp light_red_leds(x) when x >= 2 do
-    Fw.Led.set_red(1)
+    @hw_led.set_red(true)
   end
 
   defp light_yellow_leds(0) do
-    Fw.Led.set_yellow(0)
+    @hw_led.set_yellow(false)
   end
 
   defp light_yellow_leds(1) do
-    Fw.Led.set_yellow1(1)
-    Fw.Led.set_yellow2(0)
+    @hw_led.set_yellow1(true)
+    @hw_led.set_yellow2(false)
   end
 
   defp light_yellow_leds(x) when x >= 2 do
-    Fw.Led.set_yellow(1)
+    @hw_led.set_yellow(true)
   end
 
   defp light_green_leds(0) do
-    Fw.Led.set_green(0)
+    @hw_led.set_green(false)
   end
 
   defp light_green_leds(1) do
-    Fw.Led.set_green1(1)
-    Fw.Led.set_green2(0)
+    @hw_led.set_green1(true)
+    @hw_led.set_green2(false)
   end
 
   defp light_green_leds(x) when x >= 2 do
-    Fw.Led.set_green(1)
+    @hw_led.set_green(true)
   end
 end
