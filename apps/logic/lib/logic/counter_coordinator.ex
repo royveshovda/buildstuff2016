@@ -8,6 +8,7 @@ defmodule Logic.CounterCoordinator do
   @g "green"
   @y "yellow"
 
+  ## Client API
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
@@ -16,6 +17,7 @@ defmodule Logic.CounterCoordinator do
     GenServer.cast(__MODULE__, {:new_update, new_update})
   end
 
+  ## Server API
   def init([]) do
     {:ok, %{}}
   end

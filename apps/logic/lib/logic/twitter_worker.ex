@@ -6,6 +6,7 @@ defmodule Logic.TwitterWorker do
   @hashtag "#buildstuff_nerves_workshop"
   @user_handle "@RoyV33706219"
 
+  ## Client API
   def send(message) do
     GenServer.cast(__MODULE__, {:send_tweet, message})
   end
@@ -14,6 +15,7 @@ defmodule Logic.TwitterWorker do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
+  ## Server API
   def init([]) do
     Process.send_after(self(), :starting, 500)
     {:ok, %{running: false}}

@@ -2,6 +2,7 @@ defmodule Ui.Simulator.Led do
   use GenServer
   @behaviour Contract.Led
 
+  ## Client API
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
@@ -15,8 +16,8 @@ defmodule Ui.Simulator.Led do
     set_red2(random_bool())
   end
 
-  def get_state() do
-    GenServer.call(__MODULE__, :get_state)
+  def get_hardware_state() do
+    GenServer.call(__MODULE__, :get_hardware_state)
   end
 
   def set_green(switch_to) do
@@ -55,12 +56,13 @@ defmodule Ui.Simulator.Led do
     GenServer.cast(__MODULE__, {:switch, :r2, switch_to})
   end
 
+  ## Server API
   def init([]) do
     state = %Contract.LedState{g1: 0, g2: 0, y1: 0, y2: 0, r1: 0, r2: 0}
     {:ok, state}
   end
 
-  def handle_call(:get_state, _from, state) do
+  def handle_call(:get_hardware_state, _from, state) do
     {:reply, state, state}
   end
 

@@ -1,13 +1,20 @@
 defmodule Fw.Button do
   use GenServer
+  @behaviour Contract.Button
 
   @pin_temperature 5
   @pin_humidity 6
 
+  ## Client API
   def start_link(opts \\ []) do
-    GenServer.start_link(__MODULE__, [], opts)
+    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
+  def get_hardware_state() do
+     GenServer.call(__MODULE__, :get_hardware_state)
+  end
+
+  ## Server API
   def init([]) do
     {:ok, b1} = GpioRpi.start_link(@pin_temperature, :input)
     {:ok, b2} = GpioRpi.start_link(@pin_humidity, :input)
@@ -15,25 +22,29 @@ defmodule Fw.Button do
     :ok = GpioRpi.set_mode(b2, :down)
     :ok = GpioRpi.set_int(b1, :both)
     :ok = GpioRpi.set_int(b2, :both)
-    {:ok, %{b1: :up, b2: :up}}
+    {:ok, %Contract.ButtonState{b1: :up, b2: :up}}
+  end
+
+  def handle_call(:get_hardware_state, _from, state) do
+    {:reply, state, state}
   end
 
   def handle_info({:gpio_interrupt, @pin_temperature, :falling}, state) do
-    new_state = %{state | b1: :up}
+    new_state = %Contract.ButtonState{state | b1: :up}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     {:noreply, new_state}
   end
 
   def handle_info({:gpio_interrupt, @pin_humidity, :falling}, state) do
-    new_state = %{state | b2: :up}
+    new_state = %Contract.ButtonState{state | b2: :up}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     {:noreply, new_state}
   end
 
   def handle_info({:gpio_interrupt, @pin_temperature, :rising}, state) do
-    new_state = %{state | b1: :down}
+    new_state = %Contract.ButtonState{state | b1: :down}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     send_temperature
@@ -41,7 +52,7 @@ defmodule Fw.Button do
   end
 
   def handle_info({:gpio_interrupt, @pin_humidity, :rising}, state) do
-    new_state = %{state | b2: :down}
+    new_state = %Contract.ButtonState{state | b2: :down}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     send_humidity

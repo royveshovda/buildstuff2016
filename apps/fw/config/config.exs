@@ -46,6 +46,7 @@ config :ui, Ui.Endpoint,
 
 config :ui, :led_hw, Fw.Led
 config :ui, :sensor_hw, Fw.Sensor
+config :ui, :button_hw, Fw.Button
 # Import target specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 # Uncomment to use target specific configurations

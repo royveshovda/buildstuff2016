@@ -2,6 +2,7 @@ defmodule Fw.Sensor do
   use GenServer
   @behaviour Contract.Sensor
 
+  ## Client API
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
@@ -14,7 +15,7 @@ defmodule Fw.Sensor do
     GenServer.call(__MODULE__, :get_humidity)
   end
 
-
+  ## Server API
   def init([]) do
     {:ok, pid} = I2c.start_link("i2c-1", 0x40)
     state = %{pid: pid, temperature: :unknown, humidity: :unknown}

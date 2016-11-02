@@ -1,6 +1,7 @@
 defmodule Ui.Updater do
   use GenServer
 
+  ## Client API
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
@@ -17,12 +18,13 @@ defmodule Ui.Updater do
     GenServer.cast(__MODULE__, {:sensors, sensor_states})
   end
 
+  ## Server API
+  def init([]) do
+    {:ok, %{}}
+  end
+
   def handle_cast(data, state) do
     Ui.HardwareChannel.broadcast_update(data)
     {:noreply, state}
-  end
-
-  def init([]) do
-    {:ok, %{}}
   end
 end

@@ -15,6 +15,7 @@ config :ui, Ui.Endpoint,
 
 config :ui, :led_hw, Ui.Simulator.Led
 config :ui, :sensor_hw, Ui.Simulator.Sensor
+config :ui, :button_hw, Ui.Simulator.Button
 
 # Configures Elixir's Logger
 config :logger, :console,

@@ -1,16 +1,12 @@
-defmodule Ui.HardwareSimulator do
+defmodule Ui.Simulator do
   use GenServer
 
   ## Client API
   def start() do
-    start_link()
+    GenServer.start_link(__MODULE__, [], name: __MODULE__)
     Ui.Simulator.Led.start_link()
     Ui.Simulator.Sensor.start_link()
     Ui.Simulator.Button.start_link()
-  end
-
-  def start_link(opts \\ []) do
-    GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
   ## Server API

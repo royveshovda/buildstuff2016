@@ -1,5 +1,5 @@
 defmodule Contract.Led do
-  @callback get_state() :: %Contract.LedState{}
+  @callback get_hardware_state() :: %Contract.LedState{}
   @callback set_green(boolean()) :: none()
   @callback set_green1(boolean()) :: none()
   @callback set_green2(boolean()) :: none()

@@ -2,6 +2,7 @@ defmodule Ui.Simulator.Sensor do
   use GenServer
   @behaviour Contract.Sensor
 
+  ## Client API
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
@@ -19,6 +20,7 @@ defmodule Ui.Simulator.Sensor do
     GenServer.call(__MODULE__, :get_humidity)
   end
 
+  ## Server API
   def init([]) do
     state = %{temperature: :unknown, humidity: :unknown}
     {:ok, state}

@@ -2,12 +2,13 @@ defmodule Fw.Led do
   use GenServer
   @behaviour Contract.Led
 
+  ## Client API
   def start_link(opts \\ []) do
     GenServer.start_link(__MODULE__, opts, name: __MODULE__)
   end
 
-  def get_state() do
-    GenServer.call(__MODULE__, :get_state)
+  def get_hardware_state() do
+    GenServer.call(__MODULE__, :get_hardware_state)
   end
 
   def set_green(switch_to) do
@@ -46,6 +47,7 @@ defmodule Fw.Led do
     GenServer.cast(__MODULE__, {:switch, :r2, switch_to})
   end
 
+  ## Server API
   def init([]) do
     {:ok, g1} = GpioRpi.start_link(22, :output)
     {:ok, g2} = GpioRpi.start_link(25, :output)
@@ -70,7 +72,7 @@ defmodule Fw.Led do
     {:ok, state}
   end
 
-  def handle_call(:get_state, _from, state) do
+  def handle_call(:get_hardware_state, _from, state) do
     return_state = %{g1: state.g1_state, g2: state.g2_state, y1: state.y1_state, y2: state.y2_state, r1: state.r1_state, r2: state.r2_state}
     {:reply, return_state, state}
   end
