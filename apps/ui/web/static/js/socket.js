@@ -4,6 +4,9 @@
 // To use Phoenix channels, the first step is to import Socket
 // and connect at the socket path in "lib/my_app/endpoint.ex":
 import {Socket} from "phoenix"
+import {HandleTemperatureSignal} from "./temperature_handler"
+import {HandleLedSignal} from "./led_handler"
+import {HandleButtonSignal} from "./button_handler"
 
 let socket = new Socket("/socket", {params: {token: window.userToken}})
 
@@ -58,11 +61,25 @@ let channel = socket.channel("hardware:all", {})
 let messagesContainer = document.querySelector("#messages")
 
 channel.on("new_update", payload => {
-  let messageItem = document.createElement("li");
-  //messageItem.innerText = `[${Date()}] ${payload.body}`
-  messageItem.innerText = `[${Date()}] -- ${JSON.stringify(payload.body)}`
+switch (payload.type) {
+  case "1":
+    HandleLedSignal(payload);
+    break;
+  case "2":
+    HandleButtonSignal(payload);
+    break;
+  case "3":
+    HandleTemperatureSignal(payload);
+    break;
+  default:
 
-  messagesContainer.appendChild(messageItem)
+}
+
+  //let messageItem = document.createElement("li");
+  //messageItem.innerText = `[${Date()}] ${payload.body}`
+  //messageItem.innerText = `[${Date()}] -- ${JSON.stringify(payload)}`
+
+  //messagesContainer.appendChild(messageItem)
 })
 
 channel.join()

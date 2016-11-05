@@ -1,5 +1,60 @@
-<div class="jumbotron">
-  <h2><%= gettext "Welcome to %{name}", name: "Phoenix!" %></h2>
-  <p class="lead">A productive web framework that<br />does not compromise speed and maintainability.</p>
-  <div id="messages"></div
+<div class="container">
+  <div class="row">
+      <div class="col-md-2">
+          Temperature:
+      </div>
+      <div class="col-md-4" id="div_temperature">
+
+      </div>
+      <div class="col-md-2">
+        Humidity:
+      </div>
+      <div class="col-md-4" id="div_humidity">
+
+      </div>
+  </div>
+
+  <div class="row">
+    &nbsp;
+  </div>
+
+  <div class="row">
+      <div class="col-md-4">
+        <button class="btn btn-default" id="btn_temparature">Temperature</button>
+      </div>
+      <div class="col-md-4 col-md-offset-2">
+        <button class="btn btn-default" id="btn_humidity">Humidity</button>
+      </div>
+  </div>
+
+  <div class="row">
+    &nbsp;
+  </div>
+
+  <div class="row">
+      <div class="col-md-2">
+        <button class="btn" id="btn_g1"></button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn" id="btn_g2"></button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn" id="btn_y1"></button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn" id="btn_y2"></button>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn" id="btn_r1"></button>
+      </div>
+      <div class="col-md-2">
+        <button class="btn" id="btn_r2"></button>
+      </div>
+  </div>
 </div>
