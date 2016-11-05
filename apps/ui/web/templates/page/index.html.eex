@@ -24,28 +24,36 @@
     <h3>Leds</h3>
 
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
           <button class="btn" id="btn_g1"></button>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <button class="btn" id="btn_g2"></button>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-2">
+        &nbsp;
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
           <button class="btn" id="btn_y1"></button>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <button class="btn" id="btn_y2"></button>
         </div>
       </div>
 
       <div class="row">
-        <div class="col-md-2">
+        &nbsp;
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
           <button class="btn" id="btn_r1"></button>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
           <button class="btn" id="btn_r2"></button>
         </div>
     </div>
