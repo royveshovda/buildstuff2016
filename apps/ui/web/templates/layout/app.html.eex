@@ -16,10 +16,24 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://nerves-project.org/docs">Nerves</a></li>
+            <li>
+              <a href="http://nerves-project.org/docs">
+                Nerves docs
+              </a></li>
           </ul>
         </nav>
-        <span class="logo"></span>
+
+        <a href="https://buildstuff2016workshops.sched.org/event/8XZc/roy-veshovda-hacking-hardware-with-elixir-and-nerves">
+          <span class="logo"></span>
+        </a>
+
+        <a href="https://github.com/royveshovda/buildstuff">
+          <span class="githublogo"></span>
+        </a>
+
+        <a href="http://nerves-project.org/docs">
+          <span class="nerveslogo"></span>
+        </a>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

@@ -1,5 +1,71 @@
 <div class="container">
-  <div class="row">
+<div class=row>
+  <div class="col-md-5">
+    <h3>Sensors</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            Temperature:
+        </div>
+        <div class="col-md-6" id="div_temperature">
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+          Humidity:
+        </div>
+        <div class="col-md-6" id="div_humidity">
+
+        </div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3>Leds</h3>
+
+    <div class="row">
+        <div class="col-md-2">
+          <button class="btn" id="btn_g1"></button>
+        </div>
+        <div class="col-md-2">
+          <button class="btn" id="btn_g2"></button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn" id="btn_y1"></button>
+        </div>
+        <div class="col-md-2">
+          <button class="btn" id="btn_y2"></button>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn" id="btn_r1"></button>
+        </div>
+        <div class="col-md-2">
+          <button class="btn" id="btn_r2"></button>
+        </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <h3>Buttons</h3>
+
+    <div class="row">
+        <div class="col-md-4">
+          <button class="btn btn-default" id="btn_temparature">Temperature</button>
+        </div>
+        <div class="col-md-4 col-md-offset-2">
+          <button class="btn btn-default" id="btn_humidity">Humidity</button>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+  <!-- <div class="row">
       <div class="col-md-2">
           Temperature:
       </div>
@@ -12,26 +78,26 @@
       <div class="col-md-4" id="div_humidity">
 
       </div>
-  </div>
+  </div> -->
 
-  <div class="row">
+  <!-- <div class="row">
     &nbsp;
-  </div>
+  </div> -->
 
-  <div class="row">
+  <!-- <div class="row">
       <div class="col-md-4">
         <button class="btn btn-default" id="btn_temparature">Temperature</button>
       </div>
       <div class="col-md-4 col-md-offset-2">
         <button class="btn btn-default" id="btn_humidity">Humidity</button>
       </div>
-  </div>
+  </div> -->
 
-  <div class="row">
+  <!-- <div class="row">
     &nbsp;
-  </div>
+  </div> -->
 
-  <div class="row">
+  <!-- <div class="row">
       <div class="col-md-2">
         <button class="btn" id="btn_g1"></button>
       </div>
@@ -56,5 +122,5 @@
       <div class="col-md-2">
         <button class="btn" id="btn_r2"></button>
       </div>
-  </div>
+  </div> -->
 </div>

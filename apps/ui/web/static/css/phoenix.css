@@ -32,7 +32,30 @@ form.link, form.button {
   display: inline-block;
   margin-bottom: 1em;
   background-image: url("/images/buildstufflogo.png");
-  background-size: 126 72px;
+  background-size: 126px 72px;
+  -webkit-filter: grayscale(100%); filter: grayscale(100%); filter: invert(50%);
+}
+
+.nerveslogo {
+  width: 75px;
+  height: 75px;
+  display: inline-block;
+  margin-bottom: 1em;
+  background-image: url("/images/nerves.png");
+  background-size: 75px 75px;
+  margin-left: 30px;
+  -webkit-filter: grayscale(100%); filter: grayscale(100%); filter: invert(50%);
+}
+
+.githublogo {
+  width: 75px;
+  height: 75px;
+  display: inline-block;
+  margin-bottom: 1em;
+  background-image: url("/images/githublogo.png");
+  background-size: 75px 75px;
+  margin-left: 30px;
+  -webkit-filter: grayscale(100%); filter: grayscale(100%); filter: invert(50%);
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
