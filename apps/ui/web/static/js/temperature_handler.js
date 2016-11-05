@@ -5,16 +5,16 @@ export function HandleTemperatureSignal(payload) {
   }
 
   document.getElementById('div_temperature').innerText = normalizeTemperature(payload.body.temperature);
-  document.getElementById('div_humidity').innerText = normalizeTemperature(payload.body.humidity);
+  document.getElementById('div_humidity').innerText = normalizeHumidity(payload.body.humidity);
   //$('#div_temperature').html(payload.body.temperature);
 
   console.debug(payload.body);
 }
 
 function normalizeTemperature(temperature){
-  return temperature;
+  return Math.round(temperature);
 }
 
 function normalizeHumidity(humidity){
-
+  return Math.round(humidity);
 }

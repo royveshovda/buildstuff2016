@@ -1,26 +1,26 @@
 <div class="container">
 <div class=row>
-  <div class="col-md-5">
+  <div class="col-md-4">
     <h3>Sensors</h3>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             Temperature:
         </div>
-        <div class="col-md-6" id="div_temperature">
-
+        <div class="col-md-8">
+          <span id="div_temperature">0</span><span>&deg;C</span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
           Humidity:
         </div>
-        <div class="col-md-6" id="div_humidity">
-
+        <div class="col-md-8">
+          <span id="div_humidity">0</span><span>%</span>
         </div>
     </div>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-4">
     <h3>Leds</h3>
 
     <div class="row">
@@ -54,11 +54,18 @@
     <h3>Buttons</h3>
 
     <div class="row">
-        <div class="col-md-4">
-          <button class="btn btn-default" id="btn_temparature">Temperature</button>
+        <div class="col-md-12">
+          <button class="btn btn-default" id="btn_temparature">Request Temperature</button>
         </div>
-        <div class="col-md-4 col-md-offset-2">
-          <button class="btn btn-default" id="btn_humidity">Humidity</button>
+    </div>
+
+    <div class="row">
+      &nbsp;
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+          <button class="btn btn-default" id="btn_humidity">Request Humidity</button>
         </div>
     </div>
   </div>
