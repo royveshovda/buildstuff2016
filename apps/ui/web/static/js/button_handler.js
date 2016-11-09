@@ -4,15 +4,39 @@ export function HandleButtonSignal(payload) {
     return;
   }
 
-  var temparatureButton = document.getElementById('btn_temparature');
-  var humidityButton = document.getElementById('btn_humidity');
+  let temperatureButton = document.getElementById('btn_temparature');
+  let humidityButton = document.getElementById('btn_humidity');
 
-  if (payload.body.temperature_button === 0) {
-    //temparatureButton.className = 'btn btn-default'
-  }
-  else {
-    //temparatureButton.className = 'btn btn-success'
+
+  if (payload.body.temperature_button === 'up') {
+    setTimeout(function () {
+        temperatureButton.className = 'btn btn-default'
+    }, 1000);
+
+    temperatureButton.className = 'btn btn-success'
   }
 
-  console.debug(payload.body);
+  if (payload.body.temperature_button === 'down') {
+    setTimeout(function () {
+        temperatureButton.className = 'btn btn-default'
+    }, 1000);
+
+    temperatureButton.className = 'btn btn-danger'
+  }
+
+  if (payload.body.humidity_button === 'up') {
+    setTimeout(function () {
+        humidityButton.className = 'btn btn-default'
+    }, 1000);
+
+    humidityButton.className = 'btn btn-success'
+  }
+
+  if (payload.body.humidity_button === 'down') {
+    setTimeout(function () {
+        humidityButton.className = 'btn btn-default'
+    }, 1000);
+
+    humidityButton.className = 'btn btn-danger'
+  }
 }

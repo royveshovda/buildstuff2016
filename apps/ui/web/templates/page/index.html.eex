@@ -8,7 +8,8 @@
             Temperature:
         </div>
         <div class="col-md-8">
-          <span id="div_temperature">0</span><span>&deg;C</span>
+          <span id="div_temperature">0</span>
+          <span>&deg;C</span>
         </div>
     </div>
     <div class="row">
@@ -16,7 +17,8 @@
           Humidity:
         </div>
         <div class="col-md-8">
-          <span id="div_humidity">0</span><span>%</span>
+          <span id="div_humidity">0</span>
+          <span>%</span>
         </div>
     </div>
   </div>
@@ -63,7 +65,7 @@
 
     <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-default" id="btn_temparature">Request Temperature</button>
+          <button class="btn btn-default" id="btn_temparature" onclick="requestTemperatureClick(this)">Request Temperature</button>
         </div>
     </div>
 
@@ -73,7 +75,7 @@
 
     <div class="row">
         <div class="col-md-12">
-          <button class="btn btn-default" id="btn_humidity">Request Humidity</button>
+          <button class="btn btn-default" id="btn_humidity" onclick="requestHumidityClick(this)">Request Humidity</button>
         </div>
     </div>
   </div>
