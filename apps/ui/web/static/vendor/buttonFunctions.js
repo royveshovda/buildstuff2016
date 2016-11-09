@@ -14,6 +14,6 @@ function callHardware() {
     }
   }
 
-  request.open('GET', 'api/buttons', true);
+  request.open('GET', 'api/sensors', true);
   request.send(null);
 }
