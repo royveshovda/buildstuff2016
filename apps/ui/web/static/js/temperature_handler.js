@@ -4,21 +4,24 @@ export function HandleTemperatureSignal(payload) {
     return;
   }
 
-  let temperatureElement = document.getElementById('div_temperature');
-  temperatureElement.innerText = normalizeTemperature(payload.body.temperature);
-  temperatureElement.className = "alert-info";
-  setTimeout(function () {
-      temperatureElement.className = ""
-  }, 1000);
+  if (!isNaN(payload.body.temperature)) {
+    let temperatureElement = document.getElementById('div_temperature');
+    temperatureElement.innerText = normalizeTemperature(payload.body.temperature);
+    temperatureElement.className = "alert-info";
+    setTimeout(function () {
+        temperatureElement.className = ""
+    }, 1000);
+  }
 
+  if (!isNaN(payload.body.humidity)) {
+    let humidityElement = document.getElementById('div_humidity');
+    humidityElement.innerText = normalizeHumidity(payload.body.humidity);
+    humidityElement.className = "alert-info";
 
-  let humidityElement = document.getElementById('div_humidity');
-  humidityElement.innerText = normalizeHumidity(payload.body.humidity);
-  humidityElement.className = "alert-info";
-
-  setTimeout(function () {
-      humidityElement.className = ""
-  }, 1000);
+    setTimeout(function () {
+        humidityElement.className = ""
+    }, 1000);
+  }
 
   console.debug(payload.body);
 }

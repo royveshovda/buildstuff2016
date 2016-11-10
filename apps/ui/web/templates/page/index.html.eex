@@ -27,23 +27,10 @@
 
     <div class="row">
         <div class="col-md-3">
-          <button class="btn" id="btn_g1"></button>
+          <button class="btn" id="btn_g1" onclick="requestLedClick('g1')"></button>
         </div>
         <div class="col-md-3">
-          <button class="btn" id="btn_g2"></button>
-        </div>
-      </div>
-
-      <div class="row">
-        &nbsp;
-      </div>
-
-      <div class="row">
-        <div class="col-md-3">
-          <button class="btn" id="btn_y1"></button>
-        </div>
-        <div class="col-md-3">
-          <button class="btn" id="btn_y2"></button>
+          <button class="btn" id="btn_g2" onclick="requestLedClick('g2')"></button>
         </div>
       </div>
 
@@ -53,10 +40,23 @@
 
       <div class="row">
         <div class="col-md-3">
-          <button class="btn" id="btn_r1"></button>
+          <button class="btn" id="btn_y1" onclick="requestLedClick('y1')"></button>
         </div>
         <div class="col-md-3">
-          <button class="btn" id="btn_r2"></button>
+          <button class="btn" id="btn_y2" onclick="requestLedClick('y2')"></button>
+        </div>
+      </div>
+
+      <div class="row">
+        &nbsp;
+      </div>
+
+      <div class="row">
+        <div class="col-md-3">
+          <button class="btn" id="btn_r1" onclick="requestLedClick('r1')"></button>
+        </div>
+        <div class="col-md-3">
+          <button class="btn" id="btn_r2" onclick="requestLedClick('r2')"></button>
         </div>
     </div>
   </div>
