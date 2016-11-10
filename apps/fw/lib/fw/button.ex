@@ -30,21 +30,21 @@ defmodule Fw.Button do
   end
 
   def handle_info({:gpio_interrupt, @pin_temperature, :falling}, state) do
-    new_state = %Contract.ButtonState{state | b1: :up, button_updated: b1}
+    new_state = %Contract.ButtonState{state | b1: :up, button_updated: :b1}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     {:noreply, new_state}
   end
 
   def handle_info({:gpio_interrupt, @pin_humidity, :falling}, state) do
-    new_state = %Contract.ButtonState{state | b2: :up, button_updated: b2}
+    new_state = %Contract.ButtonState{state | b2: :up, button_updated: :b2}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     {:noreply, new_state}
   end
 
   def handle_info({:gpio_interrupt, @pin_temperature, :rising}, state) do
-    new_state = %Contract.ButtonState{state | b1: :down, button_updated: b1}
+    new_state = %Contract.ButtonState{state | b1: :down, button_updated: :b1}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     send_temperature
@@ -52,7 +52,7 @@ defmodule Fw.Button do
   end
 
   def handle_info({:gpio_interrupt, @pin_humidity, :rising}, state) do
-    new_state = %Contract.ButtonState{state | b2: :down, button_updated: b2}
+    new_state = %Contract.ButtonState{state | b2: :down, button_updated: :b2}
     message = get_message_from_state(new_state)
     Ui.Updater.send_buttons_update(message)
     send_humidity
