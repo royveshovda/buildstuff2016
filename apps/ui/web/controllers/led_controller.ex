@@ -9,6 +9,18 @@ defmodule Ui.LedController do
     json(conn, state)
   end
 
+  def show(conn, %{"id" => id}) do
+    state = @hw_led.get_hardware_state()
+    id_key = id_string_to_atom(id)
+    case Map.get(state, id_key) do
+      nil ->
+        put_status(conn, :not_found)
+        |> json(%{error: "not found"})
+      result ->
+        json(conn, %{value: result})
+    end
+  end
+
   def update(conn, %{"id" => id, "state" => state}) do
     convert_state(state)
     |> switch_led(id)
@@ -63,6 +75,18 @@ defmodule Ui.LedController do
       _ ->
         Logger.warn("Unknown led received: #{inspect led}")
         :not_acceptable
+    end
+  end
+
+  defp id_string_to_atom (id) do
+    case id do
+      "g1" -> :g1
+      "g2" -> :g2
+      "y1" -> :y1
+      "y2" -> :y2
+      "r1" -> :r1
+      "r2" -> :r2
+      _ -> :unknown
     end
   end
 end
