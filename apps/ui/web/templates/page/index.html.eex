@@ -1,35 +1,35 @@
 <div class="container">
 <div class=row>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-4 col-xs-4">
     <h3>Sensors</h3>
 
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4 col-xs-4">
             Temperature:
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-8 col-xs-8">
           <span id="div_temperature">0</span>
           <span>&deg;C</span>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-4 col-xs-4">
           Humidity:
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-8 col-xs-8">
           <span id="div_humidity">0</span>
           <span>%</span>
         </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-4 col-xs-4">
     <h3>Leds</h3>
 
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <button class="btn" id="btn_g1" onclick="requestLedClick('g1')"></button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <button class="btn" id="btn_g2" onclick="requestLedClick('g2')"></button>
         </div>
       </div>
@@ -39,10 +39,10 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <button class="btn" id="btn_y1" onclick="requestLedClick('y1')"></button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <button class="btn" id="btn_y2" onclick="requestLedClick('y2')"></button>
         </div>
       </div>
@@ -52,19 +52,19 @@
       </div>
 
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <button class="btn" id="btn_r1" onclick="requestLedClick('r1')"></button>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-3 col-sm-3 col-xs-3">
           <button class="btn" id="btn_r2" onclick="requestLedClick('r2')"></button>
         </div>
     </div>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-4 col-sm-4 col-xs-4">
     <h3>Buttons</h3>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
           <button class="btn btn-default" id="btn_temparature" onclick="requestTemperatureClick(this)">Request Temperature</button>
         </div>
     </div>
@@ -74,7 +74,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 col-sm-12 col-xs-12">
           <button class="btn btn-default" id="btn_humidity" onclick="requestHumidityClick(this)">Request Humidity</button>
         </div>
     </div>
