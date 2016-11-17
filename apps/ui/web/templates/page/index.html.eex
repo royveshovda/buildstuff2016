@@ -4,8 +4,11 @@
     <h3>Sensors</h3>
 
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-4">
+        <div class="col-md-4 hidden-sm hidden-xs">
             Temperature:
+        </div>
+        <div class="col-sm-4 col-xs-4 hidden-md hidden-lg">
+            Temp:
         </div>
         <div class="col-md-8 col-sm-8 col-xs-8">
           <span id="div_temperature">0</span>
@@ -13,9 +16,12 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-4 col-sm-4 col-xs-4">
+      <div class="col-md-4 hidden-sm hidden-xs">
           Humidity:
-        </div>
+      </div>
+      <div class="col-sm-4 col-xs-4 hidden-md hidden-lg">
+          Humid:
+      </div>
         <div class="col-md-8 col-sm-8 col-xs-8">
           <span id="div_humidity">0</span>
           <span>%</span>
